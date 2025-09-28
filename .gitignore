@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+.python-version
+.venv/
+venv/
+env/
+.env
+
+# Data/Models
+data/*
+!data/README.md
+models/*
+!models/.gitkeep
+
+# Results
+results/*
+!results/.gitkeep
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store

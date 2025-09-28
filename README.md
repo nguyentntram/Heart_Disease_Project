@@ -1,0 +1,97 @@
+# Comprehensive ML Pipeline on Heart Disease (UCI) — Starter Kit
+
+**Date scaffolded:** 2025-09-28
+
+This repo gives you a production‑ready scaffold to implement the full pipeline described in your spec:
+Preprocessing → PCA → Feature Selection → Supervised + Unsupervised → Hyperparameter Tuning → Export `.pkl` → Streamlit UI → (Optional) Ngrok.
+
+---
+
+## Quick Start
+
+1) **Create env & install deps**
+```bash
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+2) **Add the dataset**
+- Download the **Heart Disease UCI** CSV into `data/heart_disease.csv`.
+  - Common columns expected (Cleveland-style):  
+    `age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal,target`  
+  - If your CSV uses different names, edit `src/constants.py` and `src/pipeline.py` accordingly.
+
+3) **Train baseline + tune + export**
+```bash
+python src/train_pipeline.py
+```
+- Metrics saved to `results/evaluation_metrics.txt`
+- Best model saved to `models/final_model.pkl` (includes preprocessing pipeline).
+
+4) **Run the Streamlit UI**
+```bash
+streamlit run ui/app.py
+```
+- Enter patient features, get prediction/probability.
+
+---
+
+## Repository Structure
+
+```
+Heart_Disease_Project/
+├─ data/
+│  └─ heart_disease.csv     # (you add this)
+├─ notebooks/
+│  ├─ 01_data_preprocessing.ipynb
+│  ├─ 02_pca_analysis.ipynb
+│  ├─ 03_feature_selection.ipynb
+│  ├─ 04_supervised_learning.ipynb
+│  ├─ 05_unsupervised_learning.ipynb
+│  └─ 06_hyperparameter_tuning.ipynb
+├─ models/
+│  └─ final_model.pkl       # (auto-generated)
+├─ ui/
+│  └─ app.py                # Streamlit app
+├─ deployment/
+│  └─ ngrok_setup.txt
+├─ results/
+│  └─ evaluation_metrics.txt
+├─ src/
+│  ├─ constants.py
+│  ├─ pipeline.py
+│  ├─ feature_selection.py
+│  ├─ supervised.py
+│  ├─ unsupervised.py
+│  ├─ tuning.py
+│  └─ train_pipeline.py
+├─ requirements.txt
+├─ .gitignore
+└─ README.md
+```
+
+---
+
+## What’s included
+
+- **Sklearn ColumnTransformer pipeline** with imputers, scaler, and one‑hot encoding.
+- **PCA** helper (on scaled numeric features).
+- **Feature selection** (RFE + Chi‑Square + RF importance).
+- **Baseline models**: Logistic Regression, Decision Tree, Random Forest, SVM.
+- **Metrics**: Accuracy, Precision, Recall, F1, ROC‑AUC + ROC curve data.
+- **Clustering**: KMeans (elbow), Agglomerative (dendrogram) + ARI against labels.
+- **Hyperparameter tuning** (GridSearchCV / RandomizedSearchCV) for RF and SVM.
+- **Model export** with `joblib` (full pipeline, so UI can load and predict safely).
+- **Streamlit UI** ready to run.
+
+---
+
+## Tips
+
+- Keep **train/val/test** splits stable for fair comparisons.
+- Check **class balance**; consider class weights or stratified splits.
+- Track **random_state** for reproducibility.
+- Use the notebooks for exploration; commit final logic into `/src` for production.
+
+Good luck — ship it! 🚀
