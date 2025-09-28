@@ -12,7 +12,7 @@ Preprocessing → PCA → Feature Selection → Supervised + Unsupervised → Hy
 1) **Create env & install deps**
 ```bash
 python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
++ source .venv/bin/activate  # Windows (PowerShell): .venv\Scripts\Activate
 pip install -r requirements.txt
 ```
 
@@ -20,11 +20,11 @@ pip install -r requirements.txt
 - Download the **Heart Disease UCI** CSV into `data/heart_disease.csv`.
   - Common columns expected (Cleveland-style):  
     `age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal,target`  
-  - If your CSV uses different names, edit `src/constants.py` and `src/pipeline.py` accordingly.
+  - **Notes:** `?` values are treated as missing; original labels {0..4} are converted to binary inside the training script (`target > 0 → 1`).
 
 3) **Train baseline + tune + export**
 ```bash
-python src/train_pipeline.py
+python -m src.train_pipeline
 ```
 - Metrics saved to `results/evaluation_metrics.txt`
 - Best model saved to `models/final_model.pkl` (includes preprocessing pipeline).

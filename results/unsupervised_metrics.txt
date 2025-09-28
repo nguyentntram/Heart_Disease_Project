@@ -1,0 +1,4 @@
+Silhouette (KMeans, k=2): 0.16942874337532074
+ARI (KMeans vs labels): 0.346787943626812
+Silhouette (Agglomerative, 2 clusters): 0.15691261401121612
+ARI (Agglomerative vs labels): 0.21942963022399964

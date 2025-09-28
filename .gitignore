@@ -22,3 +22,8 @@ results/*
 
 # OS
 .DS_Store
+# Track result artifacts
+!results/*.png
+!results/*.csv
+!results/*.txt
+

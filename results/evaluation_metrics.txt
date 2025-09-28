@@ -1,0 +1,61 @@
+=== BASELINE METRICS (test set) ===
+    logreg | Acc=0.8852  Prec=0.8387  Rec=0.9286  F1=0.8814  AUC=0.9665
+     dtree | Acc=0.7377  Prec=0.6765  Rec=0.8214  F1=0.7419  AUC=0.7440
+        rf | Acc=0.8689  Prec=0.8125  Rec=0.9286  F1=0.8667  AUC=0.9421
+       svm | Acc=0.8852  Prec=0.8387  Rec=0.9286  F1=0.8814  AUC=0.9643
+
+=== TUNING SUMMARY (CV AUC) ===
+RF best params: {'max_depth': None, 'max_features': 'log2', 'min_samples_leaf': 2, 'min_samples_split': 5, 'n_estimators': 500}, best cv AUC: 0.9065
+SVM best params: {'C': 100, 'gamma': 0.001, 'kernel': 'rbf'}, best cv AUC: 0.9034
+
+=== SELECTED BEST MODEL: logreg (AUC=0.9665) ===
+
+=== FEATURE SELECTION SNAPSHOTS ===
+[Top 15 by Chi^2]
+  feature      chi2      p_value
+ thal_7.0 42.958360 5.591745e-11
+   cp_4.0 42.410097 7.400700e-11
+exang_1.0 38.052613 6.886243e-10
+ thal_3.0 36.592219 1.456118e-09
+   ca_0.0 28.315601 1.030620e-07
+slope_1.0 24.086540 9.210184e-07
+   cp_3.0 21.551109 3.445235e-06
+slope_2.0 20.624160 5.588639e-06
+   ca_2.0 19.509795 1.000851e-05
+exang_0.0 18.466709 1.728982e-05
+  sex_0.0 15.785218 7.095470e-05
+   cp_2.0 15.646367 7.635913e-05
+   ca_1.0 12.461167 4.155004e-04
+   ca_3.0 12.330323 4.456592e-04
+  oldpeak 11.382669 7.413251e-04
+
+[Top 15 by RandomForest Importance]
+  feature  importance
+  thalach    0.096953
+   cp_4.0    0.088871
+  oldpeak    0.086692
+   ca_0.0    0.083502
+ thal_3.0    0.077093
+      age    0.076684
+     chol    0.065979
+ thal_7.0    0.062174
+ trestbps    0.057061
+exang_0.0    0.040583
+exang_1.0    0.034238
+slope_1.0    0.027561
+slope_2.0    0.027406
+  sex_0.0    0.021294
+   cp_3.0    0.020691
+
+[RFE (Top=selected=True)]
+  feature  rank  selected
+  oldpeak     1      True
+  sex_0.0     1      True
+  sex_1.0     1      True
+   cp_1.0     1      True
+   cp_3.0     1      True
+   cp_4.0     1      True
+exang_1.0     1      True
+slope_2.0     1      True
+   ca_0.0     1      True
+ thal_7.0     1      True
